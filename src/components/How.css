@@ -1,0 +1,9 @@
+.section-how {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F8F8F8;
+}
+
+.section-how p {
+  font-size: 1.6em;
+}

@@ -1,0 +1,11 @@
+.language-selector a.active {
+  background-color: #290b6b;
+}
+
+.language-selector a svg path {
+  color: #fff;
+}
+
+.language-selector a:hover {
+  color: #fe6637 !important;
+}

@@ -1,0 +1,13 @@
+.header {
+  background-color: #290b6b;
+}
+
+.link-home, .nav-item .nav-link {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.link-home:hover, .nav-item .nav-link:hover, .nav-item .active {
+  text-decoration: none !important;
+  color: #fe6637 !important;
+}

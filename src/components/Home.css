@@ -1,0 +1,24 @@
+.image-card {
+  height: 100vh;
+}
+
+.image-card .no-padding {
+  padding: 0;
+}
+
+.image-card .intro-text {
+  padding-top: 50vh;
+}
+
+.image-card .intro-text .intro-heading {
+  font-size: 3.0em;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+}
+
+.image-card .intro-text .intro-lead-in {
+  font-size: 1.5em;
+  line-height: 0.7em;
+  color: #fff;
+}

@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+build production:
+  image: node:latest
+  stage: build
+  only:
+    - master
+  script:
+    - npm ci --silent
+    - npm install -g gatsby-cli
+    - npm run build
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 hour
+
+deploy production:
+  image: python:latest
+  stage: deploy
+  only:
+    - master
+  script:
+    - echo "Starting transfer to bucket ${PRODUCTION_BUCKET}"
+    - pip install awscli
+    - aws s3 sync ./public s3://${PRODUCTION_BUCKET}
+    - aws cloudfront create-invalidation --distribution-id ${PRODUCTION_CDN_DISTRIBUTION_ID} --paths "/*"
+  after_script:
+    - export VERSION=$(grep -m 1 'version' package.json | cut -d ':' -f 2 | sed 's|"||g' | sed 's|,||g' | sed 's| ||g')
+    - git remote add api-origin https://oauth2:${GITLAB_ACCESS_TOKEN}@gitlab.com/${CI_PROJECT_PATH}
+    - export TAG=`git ls-remote --tags api-origin "${VERSION}"`
+    - >
+      if [ ! -z "$TAG" ]; then
+        echo "There's already a tag ${VERSION}, this step will not create it"
+      else
+        echo "There's no tag ${VERSION}, let's create it..."
+        git config user.email "${GITLAB_USER_EMAIL}"
+        git config user.name "${GITLAB_USER_NAME}"
+        git tag -a ${VERSION} -m "Auto-Release"
+        git push api-origin ${VERSION}
+      fi

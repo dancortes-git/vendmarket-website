@@ -1,0 +1,8 @@
+.section-what {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.section-what p {
+  font-size: 1.6em;
+}
