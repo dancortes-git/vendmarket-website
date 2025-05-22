@@ -38,8 +38,7 @@ const Home = ({altHomeImage, homeImageFileName}) => {
           <Container>
             <div className="intro-text">
               <div className="intro-heading">Vendmarket</div>
-              <div className="intro-lead-in">vending machines</div>
-              <div className="intro-lead-in">micromarkets</div>
+              <div className="intro-lead-in">vending machines | micromarkets</div>
             </div>
           </Container>
         </Card.ImgOverlay>
