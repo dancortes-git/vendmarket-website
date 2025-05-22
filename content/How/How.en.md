@@ -14,6 +14,6 @@ values: {
 vision: {
   icon: "eye",
   title: "Vision",
-  description: "To be recognized as the best vending machine company in Brazil, highly innovative, reaching all capitals and bringing technology to millions of people."
+  description: "To be recognized as the best vending machines and micromarkets company in Brazil, highly innovative, reaching all capitals and bringing technology to millions of people."
 }
 ---
